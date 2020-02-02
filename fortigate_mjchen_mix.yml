@@ -1,0 +1,55 @@
+- hosts: localhost
+  vars:
+   host: "x.x.x.x:8443"
+   username: "admin"
+   password: ""
+   vdom: "root"
+   https: "True"
+   ssl_verify: "False"
+  tasks:
+  - name: Configure IPv4 static routing tables.
+    fortios_router_static:
+      host:  "{{ host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      vdom:  "{{ vdom }}"
+      https: "True"
+      ssl_verify: "False"
+      #state: "present"
+      state: "absent"
+      router_static:
+        dst: "123.123.123.123/32"
+        gateway: "123.123.123.1"
+        device: "wan2"
+        seq_num: "10000"
+  - name : add a firewall policy
+    fortios_firewall_policy:
+      host:  "{{ host }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      vdom:  "{{ vdom }}"
+      https: "True"
+      ssl_verify: "False"
+      #state: "present"
+      state: "absent"
+      firewall_policy:
+        policyid: "10000"
+        name: "Created By Ansible"
+        action: "accept"
+        srcaddr:
+          -
+             name: "all"
+        dstaddr:
+          -
+             name: "all"
+        srcintf:
+          -
+             name: "wan2"
+        dstintf:
+          -
+             name: "wan2"
+        service:
+          -
+             name: "HTTP"
+        schedule: "always"
+        logtraffic: "all"

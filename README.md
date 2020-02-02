@@ -15,5 +15,7 @@ docker run -v /Users/mjchen/Ansible/Ansible-Docker-env/:/Ansible-Docker-env --rm
 diag debug application httpsd 255
 diag debug enable
 
-#Disable InsecureRequestWarning in fortiosapi
-vim /usr/local/lib/python3.6/dist-packages/fortiosapi/fortiosapi.py
+#Disable InsecureRequestWarning in fortiosapi  
+vim /usr/local/lib/python3.6/dist-packages/fortiosapi/fortiosapi.py  
+
+

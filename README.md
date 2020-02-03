@@ -5,7 +5,7 @@ Docker for ansible enviroment to connect FortiGate
 #Docekr test/dev 
 docker build  -t yyansible .
 
-#Run
+#Run(or just run next command to both run container and mount directory)
 docker run -i -t yyansible /bin/bash
 
 #To mount a local directory for playbook dev/test :
